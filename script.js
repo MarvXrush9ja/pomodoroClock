@@ -16,8 +16,13 @@ window.onload = () => {
 
 // Timer func
 function start() {
+    //change button
+    document.getElementById('start').style.display = "none"
+    document.getElementById('reset').style.display = "block"
+
+
     // change time
-    seconds = 3;
+    seconds = 59;
 
     let studyMin = studyTime - 1;
     let restMin = restTime - 1;
@@ -40,10 +45,17 @@ function start() {
                     // start count
                     studyMin = restMin;
                     restCount++;
+
+                    // change panel
+                    studyTitle.classList.remove('active')
+                    restTitle.classList.add('active')
                 } else {
                 // continue
                 studyMin = studyTime;
                 restCount++
+
+                restTitle.classList.remove('active')
+                studyTitle.classList.add('active')
             } 
             }
             seconds = 59;
