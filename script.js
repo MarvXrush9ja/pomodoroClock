@@ -1,10 +1,10 @@
-const studyTitle = document.getElementById('study');
-const restTitle = document.getElementById('rest');
+let studyTitle = document.getElementById('study');
+let restTitle = document.getElementById('rest');
 
 let studyTime = 25;
 let restTime = 5;
 
-let seconds = '00';
+let seconds = "00"
 
 // display conntrol
 window.onload = () => {
@@ -17,7 +17,7 @@ window.onload = () => {
 // Timer func
 function start() {
     // change time
-    seconds = 59;
+    seconds = 3;
 
     let studyMin = studyTime - 1;
     let restMin = restTime - 1;
@@ -32,6 +32,22 @@ function start() {
 
         // start
         seconds = seconds - 1;
+
+        if(seconds === 0 ){
+            studyMin = studyMin -1;
+            if (studyMin === -1 ) {
+                if(restCount % 2 === 0 ){
+                    // start count
+                    studyMin = restMin;
+                    restCount++;
+                } else {
+                // continue
+                studyMin = studyTime;
+                restCount++
+            } 
+            }
+            seconds = 59;
+        }
     }
 
     // start countdown
